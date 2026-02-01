@@ -187,7 +187,7 @@ app. The app is chosen from your OS's preference."
   (set-buffer-modified-p t)
   (set-buffer-file-coding-system 'utf-8-unix)
   (delete-trailing-whitespace)
-  (view-mode-enter)
+  ;;(view-mode-enter)
   )
 
 ;; https://stackoverflow.com/questions/5154309/how-to-make-a-opened-buffer-read-only-without-reloading-again-with-find-file-re
@@ -198,9 +198,10 @@ app. The app is chosen from your OS's preference."
              (when (and (buffer-file-name)
                         (file-exists-p (buffer-file-name))
                         (file-writable-p (buffer-file-name)))
-               (message "View mode enabled in current buffer")
-               (view-mode-enter))
-             ;;(view-mode-exit t)
+               ;;(message "View mode enabled in current buffer")
+               ;;(view-mode-enter)
+               )
+             (view-mode-exit t)
              (delete-other-windows)
              ))
 
@@ -216,8 +217,10 @@ app. The app is chosen from your OS's preference."
 ;;   (apply old-func args))
 ;; (advice-add #'c-quick-toggle-mode :around #'my-exit-view-mode-advise)
 
-(global-set-key (kbd "C-z") 'view-mode)
+;; (global-set-key (kbd "C-z") 'view-mode)
 (define-key view-mode-map (kbd "q") 'my-quit-buffer)
+(define-key viper-mode-map (kbd "q") 'my-quit-buffer)
+
 
 (defalias 'ctl-z-keymap (make-sparse-keymap))
 (defvar ctl-z-map (symbol-function 'ctl-z-keymap))
@@ -286,7 +289,7 @@ app. The app is chosen from your OS's preference."
     )
   (c-quick-kill-current-buffer)
   (unless (eq major-mode 'dired-mode)
-    (view-mode-enter)
+    ;;(view-mode-enter)
     )
   )
 (define-key dired-mode-map (kbd "q") #'my-quit-buffer)
