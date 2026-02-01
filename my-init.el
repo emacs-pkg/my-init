@@ -195,7 +195,7 @@ app. The app is chosen from your OS's preference."
   ;;   (call-interactively #'viper-change-state-to-vi)
   ;;   )
   (when (eq (key-binding (kbd "SPC")) 'self-insert-command)
-         (call-interactively #'viper-toggle-key-action)
+         (call-interactively #'viper-change-state-to-vi)
          )
   )
 
