@@ -18,8 +18,10 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package '(c-quick :type git :host github :repo "emacs-pkg/c-quick"))
-(require 'c-quick)
+;;(straight-use-package '(c-quick :type git :host github :repo "emacs-pkg/c-quick"))
+;;(require 'c-quick)
+(straight-use-package '(c-quick :type git :host github :repo "emacs-pkg/c-quick2"))
+(require 'c-quick2)
 
 (straight-use-package '(xprint :type git :host github :repo "emacs-pkg/xprint"))
 (require 'xprint)
