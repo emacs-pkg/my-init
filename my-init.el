@@ -229,7 +229,7 @@ app. The app is chosen from your OS's preference."
 ;; (global-set-key (kbd "C-z") 'view-mode)
 (define-key view-mode-map (kbd "q") 'my-quit-buffer)
 ;;(define-key viper-mode-map (kbd "q") 'my-quit-buffer)
-(defun viper-null ()
+(defun viper-nil ()
   (interactive)
   (my-quit-buffer)
   )
