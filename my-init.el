@@ -180,3 +180,5 @@ app. The app is chosen from your OS's preference."
         )
        )
      file-list)))
+
+(provide 'my-init)
