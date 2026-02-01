@@ -1,3 +1,6 @@
+(setq viper-mode t)
+(require 'viper)
+
 ;; [straight.el]
 (defvar bootstrap-version)
 (let ((bootstrap-file
