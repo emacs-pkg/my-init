@@ -200,13 +200,13 @@ app. The app is chosen from your OS's preference."
                         (file-writable-p (buffer-file-name)))
                (message "View mode enabled in current buffer")
                (view-mode-enter))
-             ;;(view-mode-exit)
+             ;;(view-mode-exit t)
              (delete-other-windows)
              ))
 
 (add-hook 'dired-mode-hook
           #'(lambda ()
-              (view-mode-exit)
+              (view-mode-exit t)
               (delete-other-windows)
               ))
 
