@@ -189,4 +189,24 @@ app. The app is chosen from your OS's preference."
   (view-mode-enter)
   )
 
+;; https://stackoverflow.com/questions/5154309/how-to-make-a-opened-buffer-read-only-without-reloading-again-with-find-file-re
+(add-hook 'find-file-hook
+          '(lambda ()
+             (when (string-suffix-p ".rkt" (buffer-file-name))
+               (racket-mode))
+             (when (and (buffer-file-name)
+                        (file-exists-p (buffer-file-name))
+                        (file-writable-p (buffer-file-name)))
+               (message "View mode enabled in current buffer")
+               (view-mode-enter))
+             ;;(view-mode-exit)
+             (delete-other-windows)
+             ))
+
+(add-hook 'dired-mode-hook
+          #'(lambda ()
+              (view-mode-exit)
+              (delete-other-windows)
+              ))
+
 (provide 'my-init)
