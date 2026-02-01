@@ -180,6 +180,7 @@ app. The app is chosen from your OS's preference."
         )
        )
      file-list)))
+(define-key dired-mode-map (kbd "C-S-<return>") #'mu-open-in-external-app)
 
 (defadvice save-buffer (before save-buffer-always activate)
   "always save buffer"
@@ -273,7 +274,6 @@ app. The app is chosen from your OS's preference."
      (bury-buffer)
      ))
 
-;;(define-key dired-mode-map (kbd "C-S-<return>") #'mu-open-in-external-app)
 (defun my-quit-buffer ()
   (interactive)
   (delete-other-windows)
@@ -289,7 +289,6 @@ app. The app is chosen from your OS's preference."
     )
   )
 (define-key dired-mode-map (kbd "q") #'my-quit-buffer)
-(define-key dired-mode-map (kbd "C-S-<return>") #'mu-open-in-external-app)
 
 (define-key ctl-z-map (kbd "<f2>") 'my-quit-buffer)
 
