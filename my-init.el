@@ -316,6 +316,13 @@ app. The app is chosen from your OS's preference."
                 (viper-toggle-key-action)
                 (newline)))
 
+(define-key viper-vi-basic-map
+            (kbd "C-y")
+            #'(lambda ()
+                (interactive)
+                (viper-toggle-key-action)
+                (yank)))
+
 (define-key view-mode-map (kbd "i")
             #'(lambda ()
                 (interactive)
