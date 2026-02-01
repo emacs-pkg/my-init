@@ -209,6 +209,14 @@ app. The app is chosen from your OS's preference."
               (delete-other-windows)
               ))
 
+(defun my-exit-view-mode-advise (old-func &rest args)
+  (View-exit)
+  (apply old-func args))
+(advice-add #'c-quick-toggle-mode :around #'my-exit-view-mode-advise)
+
+(global-set-key (kbd "C-z") 'view-mode)
+(define-key view-mode-map (kbd "q") 'my-quit-buffer)
+
 (defalias 'ctl-z-keymap (make-sparse-keymap))
 (defvar ctl-z-map (symbol-function 'ctl-z-keymap))
 (define-key global-map (kbd "<f2>") 'ctl-z-keymap)
@@ -284,20 +292,5 @@ app. The app is chosen from your OS's preference."
 (define-key dired-mode-map (kbd "C-S-<return>") #'mu-open-in-external-app)
 
 (define-key ctl-z-map (kbd "<f2>") 'my-quit-buffer)
-
-;; ;; (define-key ctl-z-map
-;; ;;  (kbd "<f2>")
-;;  #'(lambda ()
-;;      (interactive)
-;;      (delete-other-windows)
-;;      (ignore-errors
-;;        (kill-buffer "*eshell*")
-;;        )
-;;      (ignore-errors
-;;        (kill-buffer "*scratch*")
-;;        )
-;;      (c-quick-kill-current-buffer)
-;;      )
-;;  )
 
 (provide 'my-init)
