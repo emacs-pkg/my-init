@@ -228,8 +228,11 @@ app. The app is chosen from your OS's preference."
 
 ;; (global-set-key (kbd "C-z") 'view-mode)
 (define-key view-mode-map (kbd "q") 'my-quit-buffer)
-(define-key viper-mode-map (kbd "q") 'my-quit-buffer)
-
+;;(define-key viper-mode-map (kbd "q") 'my-quit-buffer)
+(defun viper-null ()
+  (interactive)
+  (my-quit-buffer)
+  )
 
 (defalias 'ctl-z-keymap (make-sparse-keymap))
 (defvar ctl-z-map (symbol-function 'ctl-z-keymap))
