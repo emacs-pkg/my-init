@@ -295,8 +295,29 @@ app. The app is chosen from your OS's preference."
     ;;(view-mode-enter)
     )
   )
-(define-key dired-mode-map (kbd "q") #'my-quit-buffer)
 
+(define-key view-mode-map
+            (kbd "<return>")
+            #'(lambda ()
+                (interactive)
+                (view-mode-exit t)
+                (newline)))
+
+(define-key viper-vi-basic-map
+            (kbd "<return>")
+            #'(lambda ()
+                (interactive)
+                (viper-toggle-key-action)
+                (newline)))
+
+(define-key view-mode-map (kbd "i")
+            #'(lambda ()
+                (interactive)
+                (view-mode-exit t)
+                )
+            )
+
+(define-key dired-mode-map (kbd "q") #'my-quit-buffer)
 (define-key ctl-z-map (kbd "<f2>") 'my-quit-buffer)
 
 (provide 'my-init)
