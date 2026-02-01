@@ -191,6 +191,9 @@ app. The app is chosen from your OS's preference."
   (set-buffer-file-coding-system 'utf-8-unix)
   (delete-trailing-whitespace)
   ;;(view-mode-enter)
+  (unless viper-mode
+    (call-interactively #'viper-change-state-to-vi)
+    )
   )
 
 ;; https://stackoverflow.com/questions/5154309/how-to-make-a-opened-buffer-read-only-without-reloading-again-with-find-file-re
