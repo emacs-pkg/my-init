@@ -181,4 +181,12 @@ app. The app is chosen from your OS's preference."
        )
      file-list)))
 
+(defadvice save-buffer (before save-buffer-always activate)
+  "always save buffer"
+  (set-buffer-modified-p t)
+  (set-buffer-file-coding-system 'utf-8-unix)
+  (delete-trailing-whitespace)
+  (view-mode-enter)
+  )
+
 (provide 'my-init)
